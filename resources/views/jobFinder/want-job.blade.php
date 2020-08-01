@@ -160,7 +160,65 @@
     </div>
 </section>
 
+<!--               searched jobs                    -->
+@if (isset($jobs))
 
+<section class="ftco-section bg-light">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-9 pr-lg-5">
+                <div class="row justify-content-center pb-3">
+                    <div class="col-md-12 heading-section ftco-animate">
+                        @if ( $jobs->count() <= 0) <span class="subheading">No Results</span>
+                            @else
+                            <span class="subheading">{{ $jobs->count() }} Results</span>
+                            @endif
+                            <!-- <h2 class="mb-4">Results</h2> -->
+                    </div>
+                </div>
+                <div class="row">
+                    @foreach ($jobs as $job)
+
+                    <div class="col-md-12 ftco-animate">
+                        <div class="job-post-item py-4 d-block d-lg-flex align-items-center">
+                            <div class="one-third mb-4 mb-md-0">
+                                <div class="job-post-item-header d-flex align-items-center">
+                                    <h2 class="mr-3 text-black"><a href="#">{{$job->title}}</a>
+                                    </h2>
+                                    <div class="badge-wrap">
+                                        <span class="bg-danger text-white badge py-2 px-3">{{$job->type->name}}</span>
+                                    </div>
+                                </div>
+                                <div class="job-post-item-body d-block d-md-flex">
+                                    <div class="mr-3"><span class="icon-layers"></span> <a
+                                            href="#">{{$job->company}}</a></div>
+                                    <div><span class="icon-my_location"></span>
+                                        <span>{{$job->location->location}}</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="one-forth ml-auto d-flex align-items-center mt-4 md-md-0">
+                                <div>
+                                    <a href="#"
+                                        class="icon text-center d-flex justify-content-center align-items-center icon mr-2">
+                                        <span class="icon-heart"></span>
+                                    </a>
+                                </div>
+                                <a href="job-single.html" class="btn btn-primary py-2">Apply Job</a>
+                            </div>
+                        </div>
+                    </div><!-- end -->
+                    @endforeach
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+@endif
+
+<!--               searched jobs                    -->
 
 @include('jobFinder.includes.top-categories')
 @include('jobFinder.includes.recent-jobs')

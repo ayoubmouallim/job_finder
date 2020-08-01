@@ -27,6 +27,11 @@ public function index(){
 $jobs=Job::with('categories')->find(1);
 $categories=Category::get();
 
+$categories=Category::get();
+$locations=Location::get();
+$types=Type::get();
+
+
 return $categories;
 
 }
@@ -34,13 +39,28 @@ return $categories;
 
 public function getJobs(Request $request){
 
- $jobs=Job::with('categories',function($q){
-     $q->where('category_id',$request->category_id);
- })->get();
-return $jobs;
+ $jobs=Job::with('categories','location','type' )->where('category_id',$request->category_id)->where('location_id',$request->location_id)->where('type_id',$request->type_id)->get();
+
+ $categories=Category::get();
+ $locations=Location::get();
+ $types=Type::get();
+
+ return view('jobFinder.want-job',compact('jobs','categories','locations','types'));
+//return $jobs;
+}
+
+public function about(){
+    return view('jobFinder.about');
+}
+public function contact(){
+    return view('jobFinder.contact');
+}
+
+public function postForm(){
+
+    return view('jobFinder.post-job');
 }
   
-
 
 
 }

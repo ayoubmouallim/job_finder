@@ -8,13 +8,13 @@
 
         <div class="collapse navbar-collapse" id="ftco-nav">
             <ul class="navbar-nav ml-auto">
-                <li class="nav-item active"><a href="index.html" class="nav-link">Home</a></li>
-                <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
+                <li class="nav-item active"><a href="{{ route('/') }}" class="nav-link">Home</a></li>
+                <li class="nav-item"><a href="{{ route('about') }}" class="nav-link">About</a></li>
                 <li class="nav-item"><a href="candidates.html" class="nav-link">Canditates</a></li>
                 <li class="nav-item"><a href="blog.html" class="nav-link">Blog</a></li>
-                <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
-                <li class="nav-item cta mr-md-1"><a href="new-post.html" class="nav-link">Post a Job</a></li>
-                <li class="nav-item cta cta-colored"><a href="job-post.html" class="nav-link">Want a Job</a></li>
+                <li class="nav-item"><a href="{{ route('contact') }}" class="nav-link">Contact</a></li>
+                <li class="nav-item cta mr-md-1"><a href="{{ route('post-job') }}" class="nav-link">Post a Job</a></li>
+                <li class="nav-item cta cta-colored"><a href="{{ route('jobs') }}" class="nav-link">Want a Job</a></li>
 
             </ul>
         </div>

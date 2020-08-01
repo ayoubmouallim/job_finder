@@ -13,14 +13,17 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/home', function () {
+Route::get('/', function () {
     return view('jobFinder.dashboard');
-});
+})->name('/');
 Route::get('/test','jobController@index');
 
+Route::get('about','jobController@about')->name('about');
+Route::get('contact','jobController@contact')->name('contact');
 
 
-Route::get('want-job','jobController@jobForm');
+Route::get('want-job','jobController@jobForm')->name('jobs');
 
 Route::post('want-job','jobController@getJobs')->name('want.job');
 
+Route::get('post-job','jobController@postForm')->name('post-job');
