@@ -52,9 +52,7 @@ public function getJobs(Request $request){
 public function about(){
     return view('jobFinder.about');
 }
-public function contact(){
-    return view('jobFinder.contact');
-}
+
 
 public function postForm(){
 

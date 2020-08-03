@@ -19,8 +19,13 @@ Route::get('/', function () {
 Route::get('/test','jobController@index');
 
 Route::get('about','jobController@about')->name('about');
-Route::get('contact','jobController@contact')->name('contact');
 
+//contact us form
+
+Route::get('contact','contactController@create')->name('contact');
+Route::post('contact','contactController@store')->name('send-message');
+
+//
 
 Route::get('want-job','jobController@jobForm')->name('jobs');
 

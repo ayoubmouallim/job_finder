@@ -17,6 +17,7 @@
 
 <section class="ftco-section contact-section bg-light">
     <div class="container">
+
         <div class="row d-flex mb-5 contact-info">
             <div class="col-md-12 mb-4">
                 <h2 class="h3">Contact Information</h2>
@@ -37,19 +38,36 @@
         </div>
         <div class="row block-9">
             <div class="col-md-6 order-md-last d-flex">
-                <form action="#" class="bg-white p-5 contact-form">
+
+                <form action=" {{ route('send-message') }} " method="POST" class="bg-white p-5 contact-form">
+                    @csrf
+                    @if (Session::has('msg'))
+                    <div class="alert alert-success"> {{ Session::get('msg') }} </div>
+                    @endif
                     <div class="form-group">
-                        <input type="text" class="form-control" placeholder="Your Name">
+                        <input type="text" name="name" class="form-control" placeholder="Your Name">
+                        @error('name')
+                        <small class="form-text text-danger"> {{ $message }}</small>
+                        @enderror
                     </div>
                     <div class="form-group">
-                        <input type="text" class="form-control" placeholder="Your Email">
+                        <input type="text" name="email" class="form-control" placeholder="Your Email">
+                        @error('email')
+                        <small class="form-text text-danger"> {{ $message }}</small>
+                        @enderror
                     </div>
                     <div class="form-group">
-                        <input type="text" class="form-control" placeholder="Subject">
+                        <input type="text" name="subject" class="form-control" placeholder="Subject">
+                        @error('subject')
+                        <small class="form-text text-danger"> {{ $message }}</small>
+                        @enderror
                     </div>
                     <div class="form-group">
-                        <textarea name="" id="" cols="30" rows="7" class="form-control"
+                        <textarea name="message" cols="30" rows="7" class="form-control"
                             placeholder="Message"></textarea>
+                        @error('message')
+                        <small class="form-text text-danger"> {{ $message }}</small>
+                        @enderror
                     </div>
                     <div class="form-group">
                         <input type="submit" value="Send Message" class="btn btn-primary py-3 px-5">
