@@ -30,5 +30,6 @@ Route::post('contact','contactController@store')->name('send-message');
 Route::get('want-job','jobController@jobForm')->name('jobs');
 
 Route::post('want-job','jobController@getJobs')->name('want.job');
+Route::post('find-candidat','jobController@findCandidat')->name('find.candidat');
 
 Route::get('post-job','jobController@postForm')->name('post-job');

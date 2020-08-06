@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Job;
 use App\Models\Category;
+use App\Models\Candidat;
 use App\Models\Location;
 use App\Models\Type;
 
@@ -57,6 +58,18 @@ public function about(){
 public function postForm(){
 
     return view('jobFinder.post-job');
+}
+
+public function findCandidat(Request $request){
+
+    $candidats=Candidat::with('categories','location','type' )->where('category_id',$request->category_id)->where('location_id',$request->location_id)->where('type_id',$request->type_id)->get();
+
+    $categories=Category::get();
+    $locations=Location::get();
+    $types=Type::get();
+   
+    return view('jobFinder.want-job',compact('candidats','categories','locations','types'));
+   // return $candidats;
 }
   
 

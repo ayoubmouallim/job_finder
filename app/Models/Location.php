@@ -19,4 +19,9 @@ public function jobs()
     return $this->hasMany('App\Models\Job', 'location_id', 'id');
 }
 
+public function candidats()
+{
+    return $this->hasMany('App\Models\Candidat', 'category_id', 'id');
+}
+
 }

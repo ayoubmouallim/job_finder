@@ -104,30 +104,54 @@
 
                             <div class="tab-pane fade" id="v-pills-2" role="tabpanel"
                                 aria-labelledby="v-pills-performance-tab">
-                                <form action="#" class="search-job">
+                                <form action="{{ route('find.candidat') }}" method="POST" class="search-job">
                                     @csrf
-                                    <div class="row">
-                                        <div class="col-md">
-                                            <div class="form-group">
-                                                <div class="form-field">
-                                                    <div class="icon"><span class="icon-user"></span></div>
-                                                    <input type="text" class="form-control"
-                                                        placeholder="eg. Adam Scott">
+                                    <div class="row no-gutters">
+                                        <div class="col-md mr-md-2">
+                                            <div class="col-md mr-md-2">
+                                                <div class="form-group">
+                                                    <div class="form-field">
+                                                        <div class="select-wrap">
+                                                            <div class="icon"><span class="ion-ios-arrow-down"></span>
+                                                            </div>
+                                                            <select name="category_id" class="form-control">
+                                                                <option value="0">Category</option>
+                                                                @foreach ($categories as $category)
+                                                                <option value="{{ $category->id }}">{{$category->name}}
+                                                                </option>
+                                                                @endforeach
+                                                            </select>
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col-md">
+                                        <div class="col-md mr-md-2">
                                             <div class="form-group">
                                                 <div class="form-field">
                                                     <div class="select-wrap">
                                                         <div class="icon"><span class="ion-ios-arrow-down"></span></div>
-                                                        <select name="" id="" class="form-control">
-                                                            <option value="">Category</option>
-                                                            <option value="">Full Time</option>
-                                                            <option value="">Part Time</option>
-                                                            <option value="">Freelance</option>
-                                                            <option value="">Internship</option>
-                                                            <option value="">Temporary</option>
+                                                        <select name="type_id" class="form-control">
+                                                            <option value="0">Job Type</option>
+                                                            @foreach ($types as $type)
+                                                            <option value="{{ $type->id }}">{{$type->name}}</option>
+                                                            @endforeach
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md mr-md-2">
+                                            <div class="form-group">
+                                                <div class="form-field">
+                                                    <div class="select-wrap">
+                                                        <div class="icon"><span class="ion-ios-arrow-down"></span></div>
+                                                        <select name="location_id" class="form-control">
+                                                            <option value="0">Location</option>
+                                                            @foreach ($locations as $location)
+                                                            <option value="{{ $location->id }}">{{$location->location}}
+                                                            </option>
+                                                            @endforeach
                                                         </select>
                                                     </div>
                                                 </div>
@@ -136,16 +160,8 @@
                                         <div class="col-md">
                                             <div class="form-group">
                                                 <div class="form-field">
-                                                    <div class="icon"><span class="icon-map-marker"></span></div>
-                                                    <input type="text" class="form-control" placeholder="Location">
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md">
-                                            <div class="form-group">
-                                                <div class="form-field">
                                                     <button type="submit"
-                                                        class="form-control btn btn-secondary">Search</button>
+                                                        class="form-control btn btn-secondary">Find</button>
                                                 </div>
                                             </div>
                                         </div>
@@ -207,6 +223,55 @@
                                 </div>
                                 <a href="job-single.html" class="btn btn-primary py-2">Apply Job</a>
                             </div>
+                        </div>
+                    </div><!-- end -->
+                    @endforeach
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+@endif
+@if (isset($candidats))
+
+<section class="ftco-section bg-light">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-9 pr-lg-5">
+                <div class="row justify-content-center pb-3">
+                    <div class="col-md-12 heading-section ftco-animate">
+                        @if ( $candidats->count() <= 0) <span class="subheading">No Results</span>
+                            @else
+                            <span class="subheading">{{ $candidats->count() }} Results</span>
+                            @endif
+                            <!-- <h2 class="mb-4">Results</h2> -->
+                    </div>
+                </div>
+                <div class="row">
+                    @foreach ($candidats as $candidat)
+
+                    <div class="col-md-12 ftco-animate">
+                        <div class="job-post-item py-4 d-block d-lg-flex align-items-center">
+                            <div class="one-third mb-4 mb-md-0">
+                                <div class="job-post-item-header d-flex align-items-center">
+                                    <h2 class="mr-3 text-black"><a href="#">{{$candidat->name}}</a>
+                                    </h2>
+                                    <div class="badge-wrap">
+                                        <span
+                                            class="bg-danger text-white badge py-2 px-3">{{$candidat->type->name}}</span>
+                                    </div>
+                                </div>
+                                <div class="job-post-item-body d-block d-md-flex">
+                                    <div class="mr-3"><span class="icon-layers"></span> <a
+                                            href="#">{{$candidat->title}}</a></div>
+                                    <div><span class="icon-my_location"></span>
+                                        <span>{{$candidat->location->location}}</span>
+                                    </div>
+                                </div>
+                            </div>
+
+
                         </div>
                     </div><!-- end -->
                     @endforeach
