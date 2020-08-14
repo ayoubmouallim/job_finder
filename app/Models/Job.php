@@ -8,7 +8,7 @@ class Job extends Model
 {
     protected $table='jobs';
     protected $fillable=[
-        'id','category_id','type_id	','location_id','title','company','price','updated_at','created_at','description'
+        'id','category_id','type_id','location_id','title','company','price','updated_at','created_at','description'
     ];
     protected $hidden=[
         'updated_at','created_at','type_id','location_id'

@@ -33,3 +33,6 @@ Route::post('want-job','jobController@getJobs')->name('want.job');
 Route::post('find-candidat','jobController@findCandidat')->name('find.candidat');
 
 Route::get('post-job','jobController@postForm')->name('post-job');
+
+Route::post('save-job','jobController@saveJob')->name('save-job');
+

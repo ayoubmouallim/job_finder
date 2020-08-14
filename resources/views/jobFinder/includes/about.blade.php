@@ -23,7 +23,7 @@
                     <div class="col-md-9">
                         <img class="img-fluid" src="assest/images/undraw_work_time_lhoj.svg" alt="">
                     </div>
-                    <h2 class="mb-4">Welcome to Jobpply</h2>
+                    <h2 class="mb-4">Welcome to JobFinder</h2>
                     <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there
                         live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics,
                         a large language ocean.</p>

@@ -30,10 +30,10 @@
                 <p><span>Phone:</span> <a href="tel://1234567920">+ 1235 2355 98</a></p>
             </div>
             <div class="col-md-3">
-                <p><span>Email:</span> <a href="mailto:info@yoursite.com">info@yoursite.com</a></p>
+                <p><span>Email:</span> <a href="mailto:info@yoursite.com">contact@jobfinder.com</a></p>
             </div>
             <div class="col-md-3">
-                <p><span>Website</span> <a href="#">yoursite.com</a></p>
+                <p><span>Website</span> <a href="#">jobfinder.com</a></p>
             </div>
         </div>
         <div class="row block-9">
